@@ -1,0 +1,23 @@
+GEM
+  specs:
+    addressable (2.8.7)
+      public_suffix (>= 2.0.2, < 7.0)
+    bigdecimal (3.2.2)
+    json-schema (5.2.1)
+      addressable (~> 2.8)
+      bigdecimal (~> 3.1)
+    json_rpc_handler (0.1.1)
+    mcp (0.2.0)
+      json-schema (>= 4.1)
+      json_rpc_handler (~> 0.1)
+    public_suffix (6.0.2)
+
+PLATFORMS
+  arm64-darwin-24
+  ruby
+
+DEPENDENCIES
+  mcp
+
+BUNDLED WITH
+   2.6.7
