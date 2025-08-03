@@ -7,21 +7,12 @@ require "logger"
 require_relative "tools/currency_tool"
 require_relative "tools/weather_tool"
 
-
 server = MCP::Server.new(
   name: "my_mcp_server",
   tools: [CurrencyTool, WeatherTool],
   resources: [],
   prompts: [],
 )
-
-# server.resources_read_handler do |params|
-#   [{
-#     uri: params[:uri],
-#     mimeType: "text/plain",
-#     text: "Hello from HTTP server resource!",
-#   }]
-# end
 
 # Create the Streamable HTTP transport
 transport = MCP::Server::Transports::StreamableHTTPTransport.new(server)
