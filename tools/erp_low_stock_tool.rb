@@ -2,8 +2,14 @@ class ErpLowStockTool < MCP::Tool
   description "A tool for searching the ERP for low stock items. Default threshold is 10."
   input_schema(
     properties: {
-      threshold: { type: "number" },
-      warehouse: { type: "string" },
+      threshold: {
+        type: "number",
+        description: "The threshold for low stock items. Default is 10."
+      },
+      warehouse: {
+        type: "string",
+        description: "The warehouse to search for low stock items. Default is all warehouses."
+      },
     },
   )
 
