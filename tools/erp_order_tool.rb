@@ -56,7 +56,6 @@ class ErpOrderTool < MCP::Tool
       total_amount: order_data["total_amount"] || 0.0,
       currency: order_data["currency"] || "USD",
       items: order_data["items"] || [],
-      shipping_address: order_data["shipping_address"] || {},
       tracking_number: nil
     }
 
@@ -92,9 +91,6 @@ class ErpOrderTool < MCP::Tool
       "  - #{item[:product_name]} (#{item[:sku]}): #{item[:quantity]} x $#{item[:unit_price]}"
     end.join("\n")
 
-    address = order[:shipping_address]
-    address_text = "#{address[:street]}, #{address[:city]}, #{address[:state]} #{address[:zip]}, #{address[:country]}"
-
     <<~TEXT
       Order ID: #{order[:order_id]}
       Customer: #{order[:customer_name]} (#{order[:customer_id]})
@@ -104,9 +100,6 @@ class ErpOrderTool < MCP::Tool
 
       Items:
       #{items_text}
-
-      Shipping Address:
-      #{address_text}
 
       Tracking: #{order[:tracking_number] || 'Not assigned'}
     TEXT
@@ -125,13 +118,6 @@ class ErpOrderTool < MCP::Tool
         { sku: "SKU-001", product_name: "Wireless Headphones", quantity: 2, unit_price: 199.99 },
         { sku: "SKU-002", product_name: "USB-C Cable", quantity: 5, unit_price: 19.99 }
       ],
-      shipping_address: {
-        street: "123 Business Ave",
-        city: "San Francisco",
-        state: "CA",
-        zip: "94105",
-        country: "USA"
-      },
       tracking_number: "TRK-001-XYZ"
     },
     {
@@ -146,13 +132,6 @@ class ErpOrderTool < MCP::Tool
         { sku: "SKU-007", product_name: "Laptop Computer", quantity: 1, unit_price: 1299.99 },
         { sku: "SKU-009", product_name: "External Monitor", quantity: 2, unit_price: 599.98 }
       ],
-      shipping_address: {
-        street: "456 Startup Blvd",
-        city: "Austin",
-        state: "TX",
-        zip: "73301",
-        country: "USA"
-      },
       tracking_number: nil
     },
     {
@@ -168,13 +147,6 @@ class ErpOrderTool < MCP::Tool
         { sku: "SKU-002", product_name: "USB-C Cable", quantity: 10, unit_price: 19.99 },
         { sku: "SKU-011", product_name: "Tablet Case", quantity: 3, unit_price: 49.99 }
       ],
-      shipping_address: {
-        street: "789 Enterprise Way",
-        city: "Seattle",
-        state: "WA",
-        zip: "98101",
-        country: "USA"
-      },
       tracking_number: nil
     }
   ].freeze
