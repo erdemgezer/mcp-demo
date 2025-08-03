@@ -14,15 +14,14 @@ class ErpLowStockTool < MCP::Tool
   )
 
   def self.call(threshold: 10, warehouse: nil)
-    all = [
+    all_items = [
       { sku: "SKU-001", warehouse: "WH1", available: 3 },
       { sku: "SKU-002", warehouse: "WH1", available: 12 },
       { sku: "SKU-007", warehouse: "WH2", available: 0 },
       { sku: "SKU-009", warehouse: "WH2", available: 7 }
     ]
 
-
-    filtered = all.select { |r| r[:available] < threshold }
+    filtered = all_items.select { |r| r[:available] < threshold }
     filtered = filtered.select { |r| r[:warehouse] == warehouse } if warehouse && !warehouse.empty?
     filtered_skus = filtered.map { |r| r[:sku] }.join(", ")
 

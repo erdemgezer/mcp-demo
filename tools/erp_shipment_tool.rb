@@ -14,75 +14,6 @@ class ErpShipmentTool < MCP::Tool
     }
   )
 
-  # Sample shipments data
-  SAMPLE_SHIPMENTS = [
-    {
-      shipment_id: "SHIP-001",
-      order_id: "ORD-001",
-      tracking_number: "TRK-001-XYZ",
-      carrier: "FastShip Express",
-      status: "delivered",
-      created_date: "2024-01-15",
-      shipped_date: "2024-01-16",
-      delivered_date: "2024-01-18",
-      destination: {
-        street: "123 Business Ave",
-        city: "San Francisco",
-        state: "CA",
-        zip: "94105",
-        country: "USA"
-      },
-      tracking_events: [
-        { date: "2024-01-15", status: "created", location: "Warehouse WH1", description: "Shipment created" },
-        { date: "2024-01-16", status: "picked_up", location: "Warehouse WH1", description: "Package picked up by carrier" },
-        { date: "2024-01-17", status: "in_transit", location: "Oakland, CA", description: "Package in transit" },
-        { date: "2024-01-18", status: "delivered", location: "San Francisco, CA", description: "Package delivered to recipient" }
-      ]
-    },
-    {
-      shipment_id: "SHIP-002",
-      order_id: "ORD-002",
-      tracking_number: "TRK-002-ABC",
-      carrier: "QuickDeliver",
-      status: "in_transit",
-      created_date: "2024-01-17",
-      shipped_date: "2024-01-18",
-      delivered_date: nil,
-      destination: {
-        street: "456 Startup Blvd",
-        city: "Austin",
-        state: "TX",
-        zip: "73301",
-        country: "USA"
-      },
-      tracking_events: [
-        { date: "2024-01-17", status: "created", location: "Warehouse WH2", description: "Shipment created" },
-        { date: "2024-01-18", status: "picked_up", location: "Warehouse WH2", description: "Package picked up by carrier" },
-        { date: "2024-01-19", status: "in_transit", location: "Dallas, TX", description: "Package in transit to destination" }
-      ]
-    },
-    {
-      shipment_id: "SHIP-003",
-      order_id: "ORD-003",
-      tracking_number: nil,
-      carrier: nil,
-      status: "pending",
-      created_date: "2024-01-17",
-      shipped_date: nil,
-      delivered_date: nil,
-      destination: {
-        street: "789 Enterprise Way",
-        city: "Seattle",
-        state: "WA",
-        zip: "98101",
-        country: "USA"
-      },
-      tracking_events: [
-        { date: "2024-01-17", status: "created", location: "Warehouse WH1", description: "Shipment created, awaiting carrier assignment" }
-      ]
-    }
-  ].freeze
-
   def self.call(action:, shipment_id: nil, order_id: nil, tracking_number: nil, status: nil)
     case action
     when "list"
@@ -257,4 +188,72 @@ class ErpShipmentTool < MCP::Tool
       #{events_text}
     TEXT
   end
+
+  SAMPLE_SHIPMENTS = [
+    {
+      shipment_id: "SHIP-001",
+      order_id: "ORD-001",
+      tracking_number: "TRK-001-XYZ",
+      carrier: "FastShip Express",
+      status: "delivered",
+      created_date: "2024-01-15",
+      shipped_date: "2024-01-16",
+      delivered_date: "2024-01-18",
+      destination: {
+        street: "123 Business Ave",
+        city: "San Francisco",
+        state: "CA",
+        zip: "94105",
+        country: "USA"
+      },
+      tracking_events: [
+        { date: "2024-01-15", status: "created", location: "Warehouse WH1", description: "Shipment created" },
+        { date: "2024-01-16", status: "picked_up", location: "Warehouse WH1", description: "Package picked up by carrier" },
+        { date: "2024-01-17", status: "in_transit", location: "Oakland, CA", description: "Package in transit" },
+        { date: "2024-01-18", status: "delivered", location: "San Francisco, CA", description: "Package delivered to recipient" }
+      ]
+    },
+    {
+      shipment_id: "SHIP-002",
+      order_id: "ORD-002",
+      tracking_number: "TRK-002-ABC",
+      carrier: "QuickDeliver",
+      status: "in_transit",
+      created_date: "2024-01-17",
+      shipped_date: "2024-01-18",
+      delivered_date: nil,
+      destination: {
+        street: "456 Startup Blvd",
+        city: "Austin",
+        state: "TX",
+        zip: "73301",
+        country: "USA"
+      },
+      tracking_events: [
+        { date: "2024-01-17", status: "created", location: "Warehouse WH2", description: "Shipment created" },
+        { date: "2024-01-18", status: "picked_up", location: "Warehouse WH2", description: "Package picked up by carrier" },
+        { date: "2024-01-19", status: "in_transit", location: "Dallas, TX", description: "Package in transit to destination" }
+      ]
+    },
+    {
+      shipment_id: "SHIP-003",
+      order_id: "ORD-003",
+      tracking_number: nil,
+      carrier: nil,
+      status: "pending",
+      created_date: "2024-01-17",
+      shipped_date: nil,
+      delivered_date: nil,
+      destination: {
+        street: "789 Enterprise Way",
+        city: "Seattle",
+        state: "WA",
+        zip: "98101",
+        country: "USA"
+      },
+      tracking_events: [
+        { date: "2024-01-17", status: "created", location: "Warehouse WH1", description: "Shipment created, awaiting carrier assignment" }
+      ]
+    }
+  ].freeze
 end
