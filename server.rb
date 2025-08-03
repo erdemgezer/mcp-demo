@@ -4,12 +4,13 @@ require "rack"
 require "rackup"
 require "json"
 require "logger"
-require_relative "tools/currency_tool"
-require_relative "tools/weather_tool"
+require_relative "tools/erp_low_stock_tool"
+require_relative "tools/erp_order_tool"
+require_relative "tools/erp_shipment_tool"
 
 server = MCP::Server.new(
-  name: "my_mcp_server",
-  tools: [CurrencyTool, WeatherTool],
+  name: "ERP MCP Server",
+  tools: [ErpLowStockTool, ErpOrderTool, ErpShipmentTool],
   resources: [],
   prompts: [],
 )
