@@ -1,6 +1,7 @@
 require "rack"
 require "rackup"
 require "json"
+require "logger"
 
 class MCPRackApp
   def initialize(transport, logger)

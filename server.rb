@@ -1,6 +1,5 @@
 require "mcp"
 require "mcp/server/transports/streamable_http_transport"
-require "logger"
 require_relative "tools/erp_low_stock_tool"
 require_relative "tools/erp_order_tool"
 require_relative "tools/erp_shipment_tool"
